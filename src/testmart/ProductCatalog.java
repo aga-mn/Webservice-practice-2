@@ -6,18 +6,28 @@ import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
+import testmart.business.ProductServiceImpl;
+
 @WebService
 public class ProductCatalog {
+	
+	ProductServiceImpl productService=new ProductServiceImpl();
 	
 	//optional annotation - all public methods in a @WebService are web methods
 	@WebMethod   
 	public List<String> getProductCategories(){
+			
+		return productService.getProductCategories();
+	}
+	
+	public List<String> getProducts(String category){
+		return productService.getProducts(category);
 		
-		List <String> categories=new ArrayList<>();
-		categories.add("Books");
-		categories.add("Movies");
-		categories.add("Music");
-		return categories;
+	}
+	
+	public boolean addProduct(String category, String product){
+		return productService.addProduct(category, product);
+		
 	}
 
 }
