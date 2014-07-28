@@ -8,23 +8,26 @@ import javax.jws.WebService;
 
 import testmart.business.ProductServiceImpl;
 
-@WebService
+@WebService(name="TestMartCatalog", portName="TestMartCatalogPoint", serviceName="TestMartCatalogService", 
+targetNamespace="http://www.testmart.com")
+
 public class ProductCatalog {
 	
 	ProductServiceImpl productService=new ProductServiceImpl();
 	
-	//optional annotation - all public methods in a @WebService are web methods
-	@WebMethod   
+	@WebMethod(action="fetch_categories", operationName="fetchCategories")   
 	public List<String> getProductCategories(){
 			
 		return productService.getProductCategories();
 	}
 	
+	@WebMethod(exclude=true)
 	public List<String> getProducts(String category){
 		return productService.getProducts(category);
 		
 	}
 	
+	@WebMethod(exclude=true)
 	public boolean addProduct(String category, String product){
 		return productService.addProduct(category, product);
 		
