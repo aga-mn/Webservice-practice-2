@@ -2,12 +2,14 @@ package testmart;
 
 import java.util.List;
 
+import javax.jws.WebResult;
 import javax.jws.WebService;
 
 import testmart.business.ProductServiceImpl;
 import testmart.model.Product;
 
-@WebService(endpointInterface="testmart.ProductCatalogInterface")
+@WebService(endpointInterface="testmart.ProductCatalogInterface", name="TestMartCatalog", portName="TestMartCatalogPoint", serviceName="TestMartCatalogService", 
+targetNamespace="http://www.testmart.com")
 public class ProductCatalog implements ProductCatalogInterface {
 	
 	ProductServiceImpl productService=new ProductServiceImpl();
