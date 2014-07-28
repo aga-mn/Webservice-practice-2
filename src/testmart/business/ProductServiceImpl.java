@@ -3,6 +3,8 @@ package testmart.business;
 import java.util.ArrayList;
 import java.util.List;
 
+import testmart.model.Product;
+
 public class ProductServiceImpl {
 
 	List<String> bookList=new ArrayList<>();
@@ -63,6 +65,14 @@ public class ProductServiceImpl {
 		}
 		return true;
 		
+	}
+
+	public List<Product> getProductsv2(String category) {
+		List<Product> productList=new ArrayList<>();
+		productList.add(new Product("Java Book", "1234", 9999.99));
+		productList.add(new Product("Another Java Book", "ABC", 12.50));
+		
+		return productList;
 	}
 	
 	
